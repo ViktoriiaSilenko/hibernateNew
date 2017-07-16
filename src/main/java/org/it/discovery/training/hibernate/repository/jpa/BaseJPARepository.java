@@ -40,13 +40,16 @@ public abstract class BaseJPARepository implements AutoCloseable{
 
             consumer.accept(em);
 
+            em.getTransaction().commit();
         } catch (Exception ex) {
             ex.printStackTrace();
-            em.getTransaction().rollback();
+            if(em != null) {
+                em.getTransaction().rollback();
+            }
             throw new RuntimeException(ex);
         } finally {
-            if (em != null) {
-                em.getTransaction().commit();
+            if (em != null && em.isOpen()) {
+                em.close();
             }
         }
     }

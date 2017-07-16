@@ -41,8 +41,6 @@ public class JPAStarter {
 
             Person person2 = new Person();
             person2.setName("Josh Long");
-            repository.save(person2);
-
             Book book2 = new Book();
             book2.setName("Spring");
             person2.addBook(book2);
@@ -51,13 +49,15 @@ public class JPAStarter {
             book3.setName("Spring Data");
             person2.addBook(book3);
 
+
+            repository.save(person2);
+
             Person person3 = new Person();
             person3.setName("Sam Newman");
             repository.save(person3);
 
-            System.out.println("Person Without Books: " + repository.findPersonWithoutBooks());
-            
-            System.out.println("Most Efficient Author: " + repository.findMostEfficientAuthor());
+            System.out.println(repository.findPersonWithoutBooks());
+            System.out.println("Most efficient author " + repository.findMostEfficientAuthor());
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -16,10 +16,9 @@ public class JPAPersonRepository extends BaseJPARepository implements PersonRepo
 
     @Override
     public Person findMostEfficientAuthor() {
-
-    	return query(em -> em.createQuery("select p from Person p " +
-    			                "order by size(p.books) desc", Person.class).setMaxResults(1).
-    			                getSingleResult());
+        return query(em -> em.createQuery("select p from Person p " +
+                "order by size(p.books) desc", Person.class).setMaxResults(1).
+                getSingleResult());
     }
 
     @Override
