@@ -17,6 +17,8 @@ public interface PersonRepository {
 	 * @return
 	 */
 	Person findMostEfficientAuthor();
+
+	void save(Person person);
 	
 	/**
 	 * Returns all the persons which books contain the specified text in

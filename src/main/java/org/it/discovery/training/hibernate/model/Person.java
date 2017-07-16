@@ -1,7 +1,9 @@
 package org.it.discovery.training.hibernate.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Person who can write books, for example
@@ -46,11 +48,19 @@ public class Person extends BaseEntity {
 		this.books = books;
 	}
 
+	public void addBook(Book book) {
+		if(books == null) {
+			books = new ArrayList<>();
+		}
+		books.add(book);
+		book.setAuthor(this);
+	}
+
 	@Override
 	public String toString() {
 		return "Person{" +
 				"name='" + name + '\'' +
-				", boss=" + boss.getName() +
+				", boss=" + Optional.ofNullable(boss).map(Person::getName).orElse("No boss") +
 				'}';
 	}
 }
