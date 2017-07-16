@@ -55,7 +55,9 @@ public class JPAStarter {
             person3.setName("Sam Newman");
             repository.save(person3);
 
-            System.out.println(repository.findPersonWithoutBooks());
+            System.out.println("Person Without Books: " + repository.findPersonWithoutBooks());
+            
+            System.out.println("Most Efficient Author: " + repository.findMostEfficientAuthor());
         } catch (Exception e) {
             e.printStackTrace();
         }

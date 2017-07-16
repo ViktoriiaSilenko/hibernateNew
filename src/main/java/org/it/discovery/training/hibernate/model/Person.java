@@ -39,7 +39,7 @@ public class Person extends BaseEntity {
 		this.name = name;
 	}
 
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	public List<Book> getBooks() {
 		return books;
 	}
